@@ -1,0 +1,46 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<header th:replace="~{cabecalho :: head('Cadastro cliente')}"></header>
+<body>
+	<nav th:replace="~{menu :: nav}"></nav>
+
+	Cadastro de clientes
+	<div class="container mt-3">
+		<form th:object="${clienteDTO}" action="/clientes" method="POST">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="input-group mb-3 input-group-sm">
+						<span class="input-group-text">Nome</span> <input type="text"
+							th:errorclass="is-invalid" th:field="*{nome}"
+							class="form-control">
+						<div class="invalid-feedback" th:errors="*{nome}"></div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="input-group mb-3 input-group-sm">
+						<span class="input-group-text">Documento</span> <input type="text"
+							th:errorclass="is-invalid" th:field="*{documento}"
+							class="form-control">
+						<div class="invalid-feedback" th:errors="*{documento}"></div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="input-group mb-3 input-group-sm">
+						<span class="input-group-text">Endereço</span> <input type="text"
+							th:errorclass="is-invalid" th:field="*{endereco}"
+							class="form-control">
+						<div class="invalid-feedback" th:errors="*{endereco}"></div>
+					</div>
+				</div>
+			</div>
+
+			<input class="btn btn-success" type="submit" value="Salvar" />
+		</form>
+	</div>
+
+</body>
+</html>

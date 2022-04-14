@@ -1,0 +1,40 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<header th:replace="~{cabecalho :: head('Visualizar Cliente')}"></header>
+<body>
+	<nav th:replace="~{menu :: nav}"></nav>
+
+	<div class="container mt-3">
+		<h3>Cadastro de clientes</h3>
+
+		<div class="row">
+			<a type="button" class="btn btn-primary" href='/clientes/criar'>Criar
+				Cliente </a>
+		</div>
+
+		<table class="table table-bordered table-sm">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Documento</th>
+					<th>Endereco</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cliente : ${clientes}">
+					<td th:text="${cliente.getNome()}">Nome</td>
+					<td th:text="${cliente.getDocumento()}">Documento</td>
+					<td th:text="${cliente.getEndereco()}">Endereco</td>
+					<td><a href="#" class="btn btn-warning"> Editar</a> <a
+						th:href="@{/clientes/{clienteId} (clienteId = ${cliente.id})}"
+						class="btn btn-danger"> Deletar</a> <a href="#"
+						class="btn btn-info"> Detalhe</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
